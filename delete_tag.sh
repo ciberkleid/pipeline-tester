@@ -33,7 +33,7 @@ __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 #git tag
 #echo
 
-tagName=":refs/tags/test/${PIPELINE_VERSION}"
+tagName="refs/tags/test/${PIPELINE_VERSION}"
 echo "Tagging the project with test ${tagName}"
 echo "${tagName}" > "${ROOT_FOLDER}/${REPO_RESOURCE}/tag"
 cp -r "${ROOT_FOLDER}/${REPO_RESOURCE}"/. "${ROOT_FOLDER}/${OUTPUT_RESOURCE}/"
