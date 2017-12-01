@@ -23,6 +23,8 @@ git branch
 git checkout "${LATEST_PROD_TAG}"
 git branch
 
+cat manifest.yml
+
 exit 0
 
 
