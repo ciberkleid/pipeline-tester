@@ -12,7 +12,7 @@ if [[ ! -z "${LATEST_TEST_TAG}" ]]; then
 	echo "${LATEST_TEST_TAG}"
 else
 	export LATEST_TEST_TAG
-	LATEST_TEST_TAG=$("${GIT_BIN}" for-each-ref --sort=taggerdate --format '%(refname)' refs/tags/test | tail -1)
+	LATEST_TEST_TAG=$(git for-each-ref --sort=taggerdate --format '%(refname)' refs/tags/test | tail -1)
 	LATEST_TEST_TAG="${LATEST_TEST_TAG#refs/tags/}"
 	echo "${LATEST_TEST_TAG}"
 fi
@@ -21,9 +21,9 @@ echo "Latest test tag is [${LATEST_TEST_TAG}]"
 echo "Deleting production tag"
 tagName="test/${PIPELINE_VERSION}"
 if [[ "${CI}" != "CONCOURSE" ]]; then
-	"${GIT_BIN}" push --delete origin "${tagName}"
+	git push --delete origin "${tagName}"
 fi
-"${GIT_BIN}" tag -d "${tagName}"
+git tag -d "${tagName}"
 exit 0
 
 
