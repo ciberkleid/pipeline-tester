@@ -4,48 +4,11 @@ set -o errexit
 
 __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# repo may contain the new repo or the prod-tagged repo
-# in case it is the latter, get the latest prod tag
-# if it is the former, this will return nothing
-#if [[ ! -z "${LATEST_TEST_TAG}" ]]; then
-#	echo "LATEST_TEST_TAG already set to [${LATEST_TEST_TAG}}]. Returning same value."
-#	echo "${LATEST_TEST_TAG}"
-#else
-#	export LATEST_TEST_TAG
-#	LATEST_TEST_TAG=$(git for-each-ref --sort=taggerdate --format '%(refname)' refs/tags/test | tail -1)
-#	LATEST_TEST_TAG="${LATEST_TEST_TAG#refs/tags/}"
-#	echo "${LATEST_TEST_TAG}"
-#fi
-#echo "Latest test tag is [${LATEST_TEST_TAG}]"
 
-#echo "Run: git tag"
-#git tag
-#echo
-#
-#tagName="test/${PIPELINE_VERSION}"
-#echo "Deleting test tag [${tagName}]"
-
-#git push --delete origin "${tagName}"
-
-#git tag -d "${tagName}"
-
-#echo "Run: git tag"
-#git tag
-#echo
-
-echo "Setting up git ssh access"
-#mkdir -p ~/.ssh
-#echo $GIT_PRIVATE_KEY > ~/.ssh/id_rsa
-#chmod 600 ~/.ssh/id_rsa
-#ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-#ssh-add ~/.ssh/id_rsa &>/dev/null
-
-export TMPDIR=/tmp
 # shellcheck source=/dev/null
 source "${ROOT_FOLDER}/${TOOLS_RESOURCE}/git-resource-helper.sh"
-#echo "${GIT_PRIVATE_KEY}" > "${TMPDIR}/git-resource-git-crypt-key"
+export TMPDIR=/tmp
 echo "${GIT_PRIVATE_KEY}" > "${TMPDIR}/git-resource-private-key"
-#load_git_crypt_key
 load_pubkey
 
 
