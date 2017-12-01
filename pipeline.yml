@@ -57,6 +57,9 @@ jobs:
   - aggregate:
     - get: tags
     - get: tools
+    passed:
+    - generate-version
+    trigger: true
   - task: delete-tag
     privileged: true
     file: tools/task.yml
