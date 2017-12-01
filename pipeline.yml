@@ -6,8 +6,6 @@ resources:
     uri: ((app-url))
     branch: ((app-branch))
     private_key: ((github-private-key))
-    git_config:
-      remote.origin.tagOpt: --no-tags
 
 - name: tags
   type: git
@@ -15,9 +13,7 @@ resources:
     uri: ((app-url))
     branch: ((app-branch))
     private_key: ((github-private-key))
-    #tag_filter: "*"
-    git_config:
-      remote.origin.tagOpt: --tags
+    tag_filter: "*"
 
 - name: filtered-tags
   type: git
@@ -25,7 +21,7 @@ resources:
     uri: ((app-url))
     branch: ((app-branch))
     private_key: ((github-private-key))
-    tag_filter: "*"
+    tag_filter: "v*"
 
 - name: tools
   type: git
