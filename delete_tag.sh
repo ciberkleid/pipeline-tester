@@ -25,7 +25,7 @@ echo
 tagName="test/${PIPELINE_VERSION}"
 echo "Deleting test tag [${tagName}]"
 
-git push --delete origin "${tagName}"
+#git push --delete origin "${tagName}"
 
 git tag -d "${tagName}"
 
