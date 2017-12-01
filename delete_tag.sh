@@ -53,6 +53,8 @@ tagNameForDelete=":refs/tags/test/${PIPELINE_VERSION}"
 echo "Deleting tag [${tagNameForDelete}]"
 git ls-remote --tags
 git push origin "${tagNameForDelete}"
+git ls-remote --tags
+
 exit 0
 
 

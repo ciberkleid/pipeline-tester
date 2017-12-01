@@ -17,7 +17,6 @@ resources:
     private_key: ((github-private-key))
     git_config:
       remote.origin.tagOpt: --tags
-      push.followTags: "true"
 
 - name: tools
   type: git
@@ -63,11 +62,6 @@ jobs:
       SCRIPT_TO_RUN: "delete_tag.sh"
       <<: *common-params
       GIT_PRIVATE_KEY: ((github-private-key))
-  - put: tags
-    params:
-      repository: out
-      tag: out/tag
-      only_tag: true
 
 common-params: &common-params
   GIT_EMAIL: ((git-email))
