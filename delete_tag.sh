@@ -37,6 +37,7 @@ mkdir -p ~/.ssh
 echo $GIT_PRIVATE_KEY > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+ssh-add ~/.ssh/id_rsa &>/dev/null
 
 tagNameForDelete=":refs/tags/test/${PIPELINE_VERSION}"
 
