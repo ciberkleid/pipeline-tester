@@ -33,16 +33,26 @@ __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 #git tag
 #echo
 
-mkdir -p ~/.ssh
-echo $GIT_PRIVATE_KEY > ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa
-ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-ssh-add ~/.ssh/id_rsa &>/dev/null
+echo "Setting up git ssh access"
+#mkdir -p ~/.ssh
+#echo $GIT_PRIVATE_KEY > ~/.ssh/id_rsa
+#chmod 600 ~/.ssh/id_rsa
+#ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+#ssh-add ~/.ssh/id_rsa &>/dev/null
+
+export TMPDIR=/tmp
+# shellcheck source=/dev/null
+source "${ROOT_FOLDER}/${TOOLS_RESOURCE}/git-resource-helper.sh"
+echo "${GIT_PRIVATE_KEY}" > "${TMPDIR}/git-resource-git-crypt-key"
+echo "${GIT_PRIVATE_KEY}" > "${TMPDIR}/git-resource-private-key"
+load_git_crypt_key
+load_pubkey
+
 
 tagNameForDelete=":refs/tags/test/${PIPELINE_VERSION}"
-
+echo "Deleting tag [${tagNameForDelete}]"
+git ls-remote --tags
 git push origin "${tagNameForDelete}"
-
 exit 0
 
 
