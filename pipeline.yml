@@ -65,6 +65,7 @@ jobs:
       MESSAGE: "Deleting tag"
       SCRIPT_TO_RUN: "delete_tag.sh"
       <<: *common-params
+      GIT_PRIVATE_KEY: ((github-private-key))
   - put: tags
     params:
       repository: out
