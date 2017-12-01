@@ -51,7 +51,7 @@ jobs:
       only_tag: true
 
 - name: delete-tag
-  serial: rue
+  serial: true
   public: false
   plan:
   - aggregate:
