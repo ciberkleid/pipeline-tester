@@ -19,13 +19,6 @@ echo "Tools resource folder is [${TOOLS_RESOURCE}]"
 source /docker-lib.sh || echo "Failed to source docker-lib.sh... Hopefully you know what you're doing"
 start_docker || echo "Failed to start docker... Hopefully you know what you're doing"
 
-#!/bin/bash
-
-set -o errexit
-set -o errtrace
-set -o pipefail
-
-
 # Contents of pipeline.sh
 export SCRIPTS_OUTPUT_FOLDER="${ROOT_FOLDER}/${REPO_RESOURCE}/ciscripts"
 echo "Scripts will be copied to [${SCRIPTS_OUTPUT_FOLDER}]"
