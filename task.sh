@@ -27,7 +27,7 @@ echo "Copying pipelines scripts"
 cd "${ROOT_FOLDER}/${REPO_RESOURCE}" || exit
 mkdir -p "${SCRIPTS_OUTPUT_FOLDER}" || echo "Failed to create the scripts output folder"
 [[ -d "${ROOT_FOLDER}/${TOOLS_RESOURCE}/" ]] && \
-    cp -r "${ROOT_FOLDER}/${TOOLS_RESOURCE}"/*_tag.sh "${SCRIPTS_OUTPUT_FOLDER}"/ || \
+    cp -r "${ROOT_FOLDER}/${TOOLS_RESOURCE}"/*.sh "${SCRIPTS_OUTPUT_FOLDER}"/ || \
     echo "Failed to copy the scripts"
 
 export CI="CONCOURSE"
