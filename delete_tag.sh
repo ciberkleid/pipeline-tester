@@ -24,9 +24,9 @@ echo
 
 tagName="test/${PIPELINE_VERSION}"
 echo "Deleting test tag [${tagName}]"
-if [[ "${CI}" != "CONCOURSE" ]]; then
+//if [[ "${CI}" != "CONCOURSE" ]]; then
 	git push --delete origin "${tagName}"
-fi
+//fi
 git tag -d "${tagName}"
 
 echo "Run: git tag"
