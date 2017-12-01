@@ -27,7 +27,7 @@ resources:
 
 jobs:
 - name: create-tag
-  serial: true
+  serial: false
   public: false
   plan:
   - aggregate:
@@ -47,15 +47,12 @@ jobs:
       only_tag: true
 
 - name: delete-tag
-  serial: true
+  serial: false
   public: false
   plan:
   - aggregate:
     - get: tags
     - get: tools
-      passed:
-      - create-tag
-      trigger: true
   - task: delete-tag
     privileged: true
     file: tools/task.yml
