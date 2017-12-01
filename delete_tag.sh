@@ -35,6 +35,7 @@ __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 mkdir -p ~/.ssh
 echo $GIT_PRIVATE_KEY > ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
 tagNameForDelete=":refs/tags/test/${PIPELINE_VERSION}"
