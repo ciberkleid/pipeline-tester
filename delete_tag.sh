@@ -22,16 +22,17 @@ echo "Run: git tag"
 git tag
 echo
 
-echo "Run: git ls-remote --tags"
-git ls-remote --tags
-echo
-
 tagName="test/${PIPELINE_VERSION}"
 echo "Deleting test tag [${tagName}]"
 if [[ "${CI}" != "CONCOURSE" ]]; then
 	git push --delete origin "${tagName}"
 fi
 git tag -d "${tagName}"
+
+echo "Run: git tag"
+git tag
+echo
+
 exit 0
 
 
