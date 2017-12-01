@@ -97,6 +97,8 @@ jobs:
   - task: echo-content
     privileged: true
     file: tools/task.yml
+    input_mapping:
+      repo: tags
     params:
       MESSAGE: "Echo content"
       SCRIPT_TO_RUN: "echo_content.sh"
@@ -112,6 +114,8 @@ jobs:
   - task: echo-content
     privileged: true
     file: tools/task.yml
+    input_mapping:
+      repo: filtered-tags
     params:
       MESSAGE: "Echo content"
       SCRIPT_TO_RUN: "echo_content.sh"
