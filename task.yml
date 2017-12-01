@@ -7,11 +7,10 @@ image_resource:
 inputs:
   - name: tools
   - name: repo
-  - name: version
 outputs:
   - name: out
 caches:
   - path: gradle
   - path: maven
 run:
-  path: tools/concourse/task.sh
+  path: tools/task.sh

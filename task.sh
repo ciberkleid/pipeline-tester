@@ -27,11 +27,5 @@ source "${ROOT_FOLDER}/${TOOLS_RESOURCE}/concourse/tasks/pipeline.sh"
 echo "${MESSAGE}"
 cd "${ROOT_FOLDER}/${REPO_RESOURCE}" || exit
 
-# repo may contain the new repo or the prod-tagged repo
-# in case it is the latter, get the latest prod tag
-# if it is the former, this will return nothing
-findLatestProdTag
-echo "Latest prod tag is [${LATEST_PROD_TAG}]"
-
 # shellcheck source=/dev/null
 . "${SCRIPTS_OUTPUT_FOLDER}/${SCRIPT_TO_RUN}"
