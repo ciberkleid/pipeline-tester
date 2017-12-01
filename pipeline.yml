@@ -67,7 +67,8 @@ jobs:
       <<: *common-params
   - put: tags
     params:
-      repository: tags
+      repository: out
+      tag: out/tag
       only_tag: true
 
 common-params: &common-params
