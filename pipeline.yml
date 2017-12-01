@@ -15,7 +15,6 @@ resources:
     uri: ((app-url))
     branch: ((app-branch))
     private_key: ((github-private-key))
-    #tag_filter: "*"
     git_config:
       remote.origin.tagOpt: --tags
       push.followTags: "true"

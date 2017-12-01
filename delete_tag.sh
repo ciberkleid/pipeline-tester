@@ -18,20 +18,25 @@ __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 #fi
 #echo "Latest test tag is [${LATEST_TEST_TAG}]"
 
-echo "Run: git tag"
-git tag
-echo
-
-tagName="test/${PIPELINE_VERSION}"
-echo "Deleting test tag [${tagName}]"
+#echo "Run: git tag"
+#git tag
+#echo
+#
+#tagName="test/${PIPELINE_VERSION}"
+#echo "Deleting test tag [${tagName}]"
 
 #git push --delete origin "${tagName}"
 
-git tag -d "${tagName}"
+#git tag -d "${tagName}"
 
-echo "Run: git tag"
-git tag
-echo
+#echo "Run: git tag"
+#git tag
+#echo
+
+tagName=":refs/tags/test/${PIPELINE_VERSION}"
+echo "Tagging the project with test ${tagName}"
+echo "${tagName}" > "${ROOT_FOLDER}/${REPO_RESOURCE}/tag"
+cp -r "${ROOT_FOLDER}/${REPO_RESOURCE}"/. "${ROOT_FOLDER}/${OUTPUT_RESOURCE}/"
 
 exit 0
 
