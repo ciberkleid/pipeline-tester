@@ -15,8 +15,17 @@ resources:
     uri: ((app-url))
     branch: ((app-branch))
     private_key: ((github-private-key))
+    #tag_filter: "*"
     git_config:
       remote.origin.tagOpt: --tags
+
+- name: filtered-tags
+  type: git
+  source:
+    uri: ((app-url))
+    branch: ((app-branch))
+    private_key: ((github-private-key))
+    tag_filter: "*"
 
 - name: tools
   type: git
@@ -62,6 +71,51 @@ jobs:
       SCRIPT_TO_RUN: "delete_tag.sh"
       <<: *common-params
       GIT_PRIVATE_KEY: ((github-private-key))
+
+- name: get-repo
+  serial: false
+  public: false
+  plan:
+  - aggregate:
+    - get: repo
+    - get: tools
+  - task: echo-content
+    privileged: true
+    file: tools/task.yml
+    params:
+      MESSAGE: "Echo content"
+      SCRIPT_TO_RUN: "echo_content.sh"
+      <<: *common-params
+
+- name: get-tags
+  serial: false
+  public: false
+  plan:
+  - aggregate:
+    - get: tags
+    - get: tools
+  - task: echo-content
+    privileged: true
+    file: tools/task.yml
+    params:
+      MESSAGE: "Echo content"
+      SCRIPT_TO_RUN: "echo_content.sh"
+      <<: *common-params
+
+- name: get-filtered-tags
+  serial: false
+  public: false
+  plan:
+  - aggregate:
+    - get: filtered-tags
+    - get: tools
+  - task: echo-content
+    privileged: true
+    file: tools/task.yml
+    params:
+      MESSAGE: "Echo content"
+      SCRIPT_TO_RUN: "echo_content.sh"
+      <<: *common-params
 
 common-params: &common-params
   GIT_EMAIL: ((git-email))
