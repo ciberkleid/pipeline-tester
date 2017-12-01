@@ -51,7 +51,7 @@ jobs:
       only_tag: true
 
 - name: delete-tag
-  serial: false
+  serial: rue
   public: false
   plan:
   - aggregate:
@@ -59,7 +59,7 @@ jobs:
     - get: tools
     passed:
     - generate-version
-    trigger: true
+    trigger: false
   - task: delete-tag
     privileged: true
     file: tools/task.yml
