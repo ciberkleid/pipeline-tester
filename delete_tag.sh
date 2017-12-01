@@ -43,9 +43,9 @@ echo "Setting up git ssh access"
 export TMPDIR=/tmp
 # shellcheck source=/dev/null
 source "${ROOT_FOLDER}/${TOOLS_RESOURCE}/git-resource-helper.sh"
-echo "${GIT_PRIVATE_KEY}" > "${TMPDIR}/git-resource-git-crypt-key"
+#echo "${GIT_PRIVATE_KEY}" > "${TMPDIR}/git-resource-git-crypt-key"
 echo "${GIT_PRIVATE_KEY}" > "${TMPDIR}/git-resource-private-key"
-load_git_crypt_key
+#load_git_crypt_key
 load_pubkey
 
 
