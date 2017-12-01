@@ -18,7 +18,7 @@ resources:
     #tag_filter: "*"
     git_config:
       remote.origin.tagOpt: --tags
-      push.followTags: true
+      push.followTags: "true"
 
 - name: tools
   type: git
